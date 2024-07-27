@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!doctype html>
+  <html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
+      rel="stylesheet">
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
+
+    <title>DeepShield Result</title>
+    <style>
+      body {
+        padding-top: 50px;
+      }
+
+      .contact .info i {
+        font-size: 48px;
+        color: #ff5828;
+        float: left;
+        width: 44px;
+        height: 44px;
+        background: #fceef3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+
+      .contact .info h4 {
+        padding: 0 0 0 60px;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #37517e;
+      }
+
+      .contact .info p {
+        padding: 0 0 0 60px;
+        margin-bottom: 0;
+        font-size: 14px;
+        color: #37517e;
+      }
+    </style>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../static/images/favicon.png" rel="icon">
+    <link href="../static/images/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../static/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../static/style.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-inner-pages">
+    <div class="container d-flex align-items-center justify-content-lg-between">
+
+      <h1 class="logo me-auto me-lg-0"><a href="{{ url_for('index') }}">DeepShield<span>.</span></a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo me-auto me-lg-0"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto " href="{{ url_for('index') }}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{ url_for('index') }}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Prediction Page</h2>
+          <ol>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li>Prediction Page</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page">
+      <div class="container">
+        <h1 class="mt-5 text-center">Network Intrusion Detection</h1>
+        <p class="text-center">Enter the required features to predict intrusion</p>
+        <form action="{{ url_for('predict') }}" method="POST">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="duration">Duration</label>
+              <input type="number" class="form-control" id="duration" name="duration" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="protocol_type">Protocol Type</label>
+              <select class="form-control" id="protocol_type" name="protocol_type" required>
+                <option value="tcp">TCP</option>
+                <option value="udp">UDP</option>
+                <option value="icmp">ICMP</option>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="service">Service</label>
+              <select class="form-control" id="service" name="service" required>
+                <option value="">Select Service</option>
+                <optgroup label="Service Options">
+                  <option value="ftp_data">ftp_data</option>
+                  <option value="other">other</option>
+                  <option value="private">private</option>
+                  <option value="http">http</option>
+                  <option value="remote_job">remote_job</option>
+                  <option value="name">name</option>
+                  <option value="netbios_ns">netbios_ns</option>
+                  <option value="eco_i">eco_i</option>
+                  <option value="mtp">mtp</option>
+                  <option value="telnet">telnet</option>
+                  <option value="finger">finger</option>
+                  <option value="domain_u">domain_u</option>
+                  <option value="supdup">supdup</option>
+                  <option value="uucp_path">uucp_path</option>
+                  <option value="Z39_50">Z39_50</option>
+                  <option value="smtp">smtp</option>
+                  <option value="csnet_ns">csnet_ns</option>
+                  <option value="uucp">uucp</option>
+                  <option value="netbios_dgm">netbios_dgm</option>
+                  <option value="urp_i">urp_i</option>
+                  <option value="auth">auth</option>
+                  <option value="domain">domain</option>
+                  <option value="ftp">ftp</option>
+                  <option value="bgp">bgp</option>
+                  <option value="ldap">ldap</option>
+                  <option value="ecr_i">ecr_i</option>
+                  <option value="gopher">gopher</option>
+                  <option value="vmnet">vmnet</option>
+                  <option value="systat">systat</option>
+                  <option value="http_443">http_443</option>
+                  <option value="efs">efs</option>
+                  <option value="whois">whois</option>
+                  <option value="imap4">imap4</option>
+                  <option value="iso_tsap">iso_tsap</option>
+                  <option value="echo">echo</option>
+                  <option value="klogin">klogin</option>
+                  <option value="link">link</option>
+                  <option value="sunrpc">sunrpc</option>
+                  <option value="login">login</option>
+                  <option value="kshell">kshell</option>
+                  <option value="sql_net">sql_net</option>
+                  <option value="time">time</option>
+                  <option value="hostnames">hostnames</option>
+                  <option value="exec">exec</option>
+                  <option value="ntp_u">ntp_u</option>
+                  <option value="discard">discard</option>
+                  <option value="nntp">nntp</option>
+                  <option value="courier">courier</option>
+                  <option value="ctf">ctf</option>
+                  <option value="ssh">ssh</option>
+                  <option value="daytime">daytime</option>
+                  <option value="shell">shell</option>
+                  <option value="netstat">netstat</option>
+                  <option value="pop_3">pop_3</option>
+                  <option value="nnsp">nnsp</option>
+                  <option value="IRC">IRC</option>
+                  <option value="pop_2">pop_2</option>
+                  <option value="printer">printer</option>
+                  <option value="tim_i">tim_i</option>
+                  <option value="pm_dump">pm_dump</option>
+                  <option value="red_i">red_i</option>
+                  <option value="netbios_ssn">netbios_ssn</option>
+                  <option value="rje">rje</option>
+                  <option value="X11">X11</option>
+                  <option value="urh_i">urh_i</option>
+                  <option value="http_8001">http_8001</option>
+                  <option value="aol">aol</option>
+                  <option value="http_2784">http_2784</option>
+                  <option value="tftp_u">tftp_u</option>
+                  <option value="harvest">harvest</option>
+                  <option value="http_8000">http_8000</option>
+                  <option value="icmp">icmp</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="flag">Flag</label>
+              <select class="form-control" id="flag" name="flag" required>
+                <option value="">Select Flag</option>
+                <optgroup label="Flag Options">
+                  <option value="SF">SF</option>
+                  <option value="S1">S1</option>
+                  <option value="REJ">REJ</option>
+                  <option value="S2">S2</option>
+                  <option value="S0">S0</option>
+                  <option value="S3">S3</option>
+                  <option value="RSTO">RSTO</option>
+                  <option value="RSTR">RSTR</option>
+                  <option value="RSTOS0">RSTOS0</option>
+                  <option value="OTH">OTH</option>
+                  <option value="SH">SH</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="src_bytes">Source Bytes</label>
+              <input type="number" class="form-control" id="src_bytes" name="src_bytes" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_bytes">Destination Bytes</label>
+              <input type="number" class="form-control" id="dst_bytes" name="dst_bytes" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="land">Land</label>
+              <input type="number" class="form-control" id="land" name="land" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="wrong_fragment">Wrong Fragment</label>
+              <input type="number" class="form-control" id="wrong_fragment" name="wrong_fragment" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="urgent">Urgent</label>
+              <input type="number" class="form-control" id="urgent" name="urgent" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="hot">Hot</label>
+              <input type="number" class="form-control" id="hot" name="hot" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_failed_logins">Number of Failed Logins</label>
+              <input type="number" class="form-control" id="num_failed_logins" name="num_failed_logins" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="logged_in">Logged In</label>
+              <input type="number" class="form-control" id="logged_in" name="logged_in" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_compromised">Number Compromised</label>
+              <input type="number" class="form-control" id="num_compromised" name="num_compromised" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="root_shell">Root Shell</label>
+              <input type="number" class="form-control" id="root_shell" name="root_shell" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="su_attempted">SU Attempted</label>
+              <input type="number" class="form-control" id="su_attempted" name="su_attempted" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_root">Number of Root</label>
+              <input type="number" class="form-control" id="num_root" name="num_root" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_file_creations">Number of File Creations</label>
+              <input type="number" class="form-control" id="num_file_creations" name="num_file_creations" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_shells">Number of Shells</label>
+              <input type="number" class="form-control" id="num_shells" name="num_shells" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_access_files">Number of Access Files</label>
+              <input type="number" class="form-control" id="num_access_files" name="num_access_files" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="num_outbound_cmds">Number of Outbound Commands</label>
+              <input type="number" class="form-control" id="num_outbound_cmds" name="num_outbound_cmds" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="is_host_login">Is Host Login</label>
+              <input type="number" class="form-control" id="is_host_login" name="is_host_login" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="is_guest_login">Is Guest Login</label>
+              <input type="number" class="form-control" id="is_guest_login" name="is_guest_login" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="count">Count</label>
+              <input type="number" class="form-control" id="count" name="count" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="srv_count">Service Count</label>
+              <input type="number" class="form-control" id="srv_count" name="srv_count" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="serror_rate">Serror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="serror_rate" name="serror_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="srv_serror_rate">Service Serror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="srv_serror_rate" name="srv_serror_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="rerror_rate">Rerror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="rerror_rate" name="rerror_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="srv_rerror_rate">Service Rerror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="srv_rerror_rate" name="srv_rerror_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="same_srv_rate">Same Service Rate</label>
+              <input type="number" step="0.01" class="form-control" id="same_srv_rate" name="same_srv_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="diff_srv_rate">Different Service Rate</label>
+              <input type="number" step="0.01" class="form-control" id="diff_srv_rate" name="diff_srv_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="srv_diff_host_rate">Service Different Host Rate</label>
+              <input type="number" step="0.01" class="form-control" id="srv_diff_host_rate" name="srv_diff_host_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="dst_host_count">Destination Host Count</label>
+              <input type="number" class="form-control" id="dst_host_count" name="dst_host_count" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_srv_count">Destination Host Service Count</label>
+              <input type="number" class="form-control" id="dst_host_srv_count" name="dst_host_srv_count" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_same_srv_rate">Destination Host Same Service Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_same_srv_rate" name="dst_host_same_srv_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="dst_host_diff_srv_rate">Destination Host Different Service Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_diff_srv_rate" name="dst_host_diff_srv_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_same_src_port_rate">Destination Host Same Source Port Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_same_src_port_rate" name="dst_host_same_src_port_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_srv_diff_host_rate">Destination Host Service Different Host Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_srv_diff_host_rate" name="dst_host_srv_diff_host_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="dst_host_serror_rate">Destination Host Serror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_serror_rate" name="dst_host_serror_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_srv_serror_rate">Destination Host Service Serror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_srv_serror_rate" name="dst_host_srv_serror_rate" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="dst_host_rerror_rate">Destination Host Rerror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_rerror_rate" name="dst_host_rerror_rate" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="dst_host_srv_rerror_rate">Destination Host Service Rerror Rate</label>
+              <input type="number" step="0.01" class="form-control" id="dst_host_srv_rerror_rate" name="dst_host_srv_rerror_rate" required>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Predict</button>
+        </form>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    </section>
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </div>
+        <div class="row mt-5">
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@example.com</p>
+              </div>
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2({
+                theme: 'bootstrap4',
+                width: '100%'
+            });
+        });
+    </script>
+
+</body>
+
+</html>
